@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>DeyyanAora - Havalimanı Transferi</title>
+
+    <!-- Font Awesome ikonlar -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Ana stil -->
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body class="page">
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="brand">
+                <div class="brand-mark">
+                    <span class="brand-icon">✈️</span>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-title">DeyyanAora Kuzukaya</span>
+                    <span class="brand-subtitle">Havalimanı transferi, sabit fiyat</span>
+                </div>
+            </a>
+
+            <nav class="header-nav">
+                <a href="#how-it-works" class="nav-link">Nasıl çalışır?</a>
+                <a href="tel:+905555555555" class="nav-link nav-link-pill">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Canlı destek</span>
+                </a>
+                <a href="/admin.html" class="icon-button" title="Admin Panel" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </a>
+
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="site-main">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-bg-overlay"></div>
+            <div class="container hero-inner">
+                <!-- Sol: mesaj + form -->
+                <div class="hero-left">
+                    <h1 class="hero-title">
+                        Havalimanından şehre,<br />
+                        <span>2 dakikada fiyatı görüp rezervasyon yap.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Uçağından in, taksi sırasına girmeden, nereye kaç TL’ye gideceğini hemen öğren.
+                        <br />
+                        Fiyat sabit, sürpriz yok.
+                    </p>
+
+                    <ul class="hero-bullets">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Harita üzerinde canlı rota ve mesafe</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-sack-dollar"></i>
+                            <span>Sabit ücret, trafik sürprizi yok</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-shield-heart"></i>
+                            <span>Yetkili transfer araçları ile güvenli yolculuk</span>
+                        </li>
+                    </ul>
+
+                    <div class="card booking-card">
+                        <div class="card-header-row">
+                            <div>
+                                <h2 class="card-title">Hemen rota oluştur</h2>
+                                <p class="card-subtitle">
+                                    Nereden nereye gideceğini ve telefonunu gir, fiyatı gör.
+                                </p>
+                            </div>
+                            <div class="pill pill-airport">
+                                <i class="fa-solid fa-plane-arrival"></i>
+                                <span>Havalimanı çıkışlı</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fromAddress">Nereden</label>
+                                <input type="text" id="fromAddress" placeholder="Örn: İstanbul Havalimanı Geliş" />
+                            </div>
+                            <div class="form-group">
+                                <label for="toAddress">Nereye</label>
+                                <input type="text" id="toAddress" placeholder="Örn: Kadıköy Rıhtım" />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon Numarası</label>
+                                <input type="tel" id="phone" placeholder="+90 5xx xxx xx xx" />
+                            </div>
+                        </div>
+
+                        <div class="actions">
+                            <button id="btnCalculate" class="btn-primary">
+                                <i class="fa-solid fa-route"></i>
+                                <span>Rota ve fiyatı hesapla</span>
+                            </button>
+                            <button id="btnSave" class="btn-secondary" disabled>
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Rezervasyonu kaydet</span>
+                            </button>
+                        </div>
+
+                        <div id="status" class="info status-text"></div>
+                        <div id="routeInfo" class="info route-info"></div>
+                    </div>
+                </div>
+
+                <!-- Sağ: görsel / kart -->
+                <div class="hero-right">
+                    <div class="hero-card">
+                        <div class="hero-image-wrap">
+                            <!-- Buraya kendi görselini koyabilirsin -->
+                            <img class="hero-image"
+                                src="https://images.pexels.com/photos/210182/pexels-photo-210182.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                                alt="Havalimanı önünde transfer aracı" />
+                            <div class="hero-badge hero-badge-top">
+                                <i class="fa-solid fa-clock"></i>
+                                <span>Uçuşun iner inmez hazır</span>
+                            </div>
+                            <div class="hero-badge hero-badge-bottom">
+                                <i class="fa-solid fa-car-side"></i>
+                                <span>Premium araçlar ile yolculuk</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-summary">
+                            <div class="summary-row">
+                                <span class="summary-label">Ortalama şehir merkezi</span>
+                                <span class="summary-value">~35 km • 45 dk</span>
+                            </div>
+                            <div class="summary-row">
+                                <span class="summary-label">Başlangıç fiyatı</span>
+                                <span class="summary-value highlight">≈ 400 TL</span>
+                            </div>
+                            <p class="summary-note">
+                                Fiyat; mesafe, saat ve trafiğe göre uygulama içinde netleştirilir.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAP SECTION -->
+        <section class="map-section">
+            <div class="container">
+                <div class="card card-map">
+                    <div class="card-header-row map-header">
+                        <div>
+                            <h2 class="card-title">Harita & Rota</h2>
+                            <p class="card-subtitle">
+                                Kalkış ve varış noktanı seç, rotanı canlı gör. Mesafe ve süre hesabı OSRM ile yapılır.
+                            </p>
+                        </div>
+                        <div class="pill pill-live">
+                            <span class="dot"></span>
+                            <span>Canlı rota önizleme</span>
+                        </div>
+                    </div>
+
+                    <div id="map"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">Nasıl çalışır?</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-icon">
+                            <span>1</span>
+                        </div>
+                        <h3>Konumunu seç</h3>
+                        <p>
+                            Havalimanı geliş terminalini ve gitmek istediğin adresi yaz.
+                            Otomatik önerilerden kolayca seç.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <span>2</span>
+                        </div>
+                        <h3>Rota & fiyatı gör</h3>
+                        <p>
+                            Harita üzerinde rotanı, tahmini süreyi ve sabit ücret teklifini hemen gör.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">
+                            <span>3</span>
+                        </div>
+                        <h3>Rezervasyonunu bırak</h3>
+                        <p>
+                            Telefon numaranla rezervasyonunu kaydet, operasyon ekibi seni arayıp onaylasın.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <span class="footer-logo">AirPortRide</span>
+                <span class="footer-text">
+                    © 2025 Tüm hakları saklıdır.
+                </span>
+            </div>
+            <div class="footer-right">
+                <a href="#hero" class="footer-link">
+                    <i class="fa-solid fa-arrow-up"></i> Başa dön
+                </a>
+                <span class="footer-dot">•</span>
+                <span class="footer-link muted">
+                    Uçuş sonrası güvenli ve şeffaf transfer için tasarlandı.
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Ana JS -->
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
