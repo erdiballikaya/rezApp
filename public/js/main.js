@@ -199,6 +199,11 @@ function setStatus(message, type = "info") {
   if (type === "success") statusEl.classList.add("success");
 }
 
+// i18n destekli status helper
+function setStatusKey(key, type = "info") {
+  setStatus(t(key), type);
+}
+
 /* ---------------------- AUTOCOMPLETE ---------------------- */
 
 function createAutocompleteContainer(inputEl) {
@@ -226,7 +231,7 @@ function showAutocomplete(inputEl, items, onSelect) {
   const list = createAutocompleteContainer(inputEl);
 
   if (!items.length) {
-    list.innerHTML = `<div class="autocomplete-empty">Sonuç bulunamadı</div>`;
+    list.innerHTML = `<div class="autocomplete-empty">${t("autocomplete.noResults")}</div>`;
     list.style.display = "block";
     return;
   }
@@ -313,11 +318,11 @@ btnCalculate.addEventListener("click", async () => {
   const phone = phoneInput.value.trim();
 
   if (!fromText || !toText) {
-    setStatus("Lütfen Nereden ve Nereye alanlarını doldurun.", "error");
+    setStatusKey("status.fillFromTo", "error");
     return;
   }
 
-  setStatus("Adresler ve rota hesaplanıyor...", "info");
+  setStatusKey("status.routeCalculating", "info");
   routeInfoEl.textContent = "";
   btnCalculate.disabled = true;
   btnSave.disabled = true;
@@ -357,9 +362,9 @@ btnCalculate.addEventListener("click", async () => {
 
     routeInfoEl.innerHTML = `
       <div>
-        <strong>Mesafe:</strong> ${distanceKm.toFixed(1)} km<br/>
-        <strong>Süre:</strong> ~${durationMinutes} dakika<br/>
-        <strong>Tahmini Fiyat:</strong> ${price.toFixed(2)} TL
+        <strong>${t("route.distanceLabel")}</strong> ${distanceKm.toFixed(1)} ${t("route.kmUnit")}<br/>
+        <strong>${t("route.durationLabel")}</strong> ~${durationMinutes} ${t("route.minutesUnit")}<br/>
+        <strong>${t("route.priceLabel")}</strong> ${price.toFixed(2)} ${t("route.currency")}
       </div>
     `;
 
@@ -375,11 +380,11 @@ btnCalculate.addEventListener("click", async () => {
       createdAt: new Date().toISOString(),
     };
 
-    setStatus("Rota ve fiyat hazır. Rezervasyonu kaydedebilirsiniz.", "success");
+    setStatusKey("status.routeReady", "success");
     btnSave.disabled = false;
   } catch (err) {
     console.error(err);
-    setStatus(err.message || "Bir hata oluştu.", "error");
+    setStatus(err.message || t("status.errorGeneric"), "error");
   } finally {
     btnCalculate.disabled = false;
   }
@@ -387,20 +392,20 @@ btnCalculate.addEventListener("click", async () => {
 
 btnSave.addEventListener("click", async () => {
   if (!lastReservationData) {
-    setStatus("Önce rota ve fiyatı hesaplayın.", "error");
+    setStatusKey("status.calculateFirst", "error");
     return;
   }
 
   const phone = phoneInput.value.trim();
   if (!phone) {
-    setStatus("Lütfen telefon numarasını girin.", "error");
+    setStatusKey("status.enterPhone", "error");
     return;
   }
 
   lastReservationData.phone = phone;
 
   try {
-    setStatus("Rezervasyon kaydediliyor...", "info");
+    setStatusKey("status.reservationSaving", "info");
     btnSave.disabled = true;
 
     const res = await fetch(`${API_BASE}/api/reservations`, {
@@ -411,21 +416,18 @@ btnSave.addEventListener("click", async () => {
 
     if (!res.ok) {
       const text = await res.text();
-      throw new Error("Sunucu hatası: " + res.status + " " + text);
+      throw new Error(t("status.serverErrorPrefix") + " " + res.status + " " + text);
     }
 
     const data = await res.json();
     if (data.success) {
-      setStatus(
-        "Rezervasyon kaydedildi. Teşekkürler, en kısa sürede dönüş yapılacak.",
-        "success"
-      );
+      setStatusKey("status.reservationSaved", "success");
     } else {
-      setStatus("Rezervasyon kaydedilemedi.", "error");
+      setStatusKey("status.reservationFailed", "error");
     }
   } catch (err) {
     console.error(err);
-    setStatus("Rezervasyon kaydedilirken hata: " + err.message, "error");
+    setStatus(t("status.reservationSaveErrorPrefix") + " " + err.message, "error");
   } finally {
     btnSave.disabled = false;
   }

@@ -1,44 +1,34 @@
 {
   "brand.subtitle": "Havalimanı transferi, sabit fiyat",
-
   "nav.howItWorks": "Nasıl çalışır?",
   "nav.liveSupport": "Canlı destek",
-
   "hero.title.line1": "Havalimanından şehre,",
   "hero.title.line2": "2 dakikada fiyatı görüp rezervasyon yap.",
   "hero.subtitle": "Uçağından in, taksi sırasına girmeden, nereye kaç TL’ye gideceğini hemen öğren.\nFiyat sabit, sürpriz yok.",
-
   "hero.bullet.liveRoute": "Harita üzerinde canlı rota ve mesafe",
   "hero.bullet.fixedPrice": "Sabit ücret, trafik sürprizi yok",
   "hero.bullet.safeTravel": "Yetkili transfer araçları ile güvenli yolculuk",
-
   "booking.title": "Hemen rota oluştur",
   "booking.subtitle": "Nereden nereye gideceğini ve telefonunu gir, fiyatı gör.",
   "booking.pillAirport": "Havalimanı çıkışlı",
-
   "form.from.label": "Nereden",
   "form.from.placeholder": "Örn: İstanbul Havalimanı Geliş",
   "form.to.label": "Nereye",
   "form.to.placeholder": "Örn: Kadıköy Rıhtım",
   "form.phone.label": "Telefon Numarası",
   "form.phone.placeholder": "+90 5xx xxx xx xx",
-
   "button.calculateRoute": "Rota ve fiyatı hesapla",
   "button.saveReservation": "Rezervasyonu kaydet",
-
   "hero.badge.top": "Uçuşun iner inmez hazır",
   "hero.badge.bottom": "Premium araçlar ile yolculuk",
-
   "hero.summary.cityCenter": "Ortalama şehir merkezi",
   "hero.summary.cityCenterValue": "~35 km • 45 dk",
   "hero.summary.startPriceLabel": "Başlangıç fiyatı",
   "hero.summary.startPriceValue": "≈ 400 TL",
   "hero.summary.note": "Fiyat; mesafe, saat ve trafiğe göre uygulama içinde netleştirilir.",
-
   "map.title": "Harita & Rota",
   "map.subtitle": "Kalkış ve varış noktanı seç, rotanı canlı gör. Mesafe ve süre hesabı OSRM ile yapılır.",
   "map.pillLive": "Canlı rota önizleme",
-
   "how.title": "Nasıl çalışır?",
   "how.step1.title": "Konumunu seç",
   "how.step1.text": "Havalimanı geliş terminalini ve gitmek istediğin adresi yaz. Otomatik önerilerden kolayca seç.",
@@ -46,8 +36,30 @@
   "how.step2.text": "Harita üzerinde rotanı, tahmini süreyi ve sabit ücret teklifini hemen gör.",
   "how.step3.title": "Rezervasyonunu bırak",
   "how.step3.text": "Telefon numaranla rezervasyonunu kaydet, operasyon ekibi seni arayıp onaylasın.",
-
   "footer.rights": "© 2025 Tüm hakları saklıdır.",
   "footer.backToTop": "Başa dön",
-  "footer.tagline": "Uçuş sonrası güvenli ve şeffaf transfer için tasarlandı."
+  "footer.tagline": "Uçuş sonrası güvenli ve şeffaf transfer için tasarlandı.",
+  "status.calculatingRoute": "Rota hesaplanıyor...",
+  "status.savingReservation": "Rezervasyon kaydediliyor...",
+  "status.success": "Rezervasyonun alındı, en kısa sürede seni arayacağız.",
+  "status.error": "Bir hata oluştu, lütfen tekrar dene.",
+  "status.missingData": "Lütfen kalkış ve varış adresini ve telefon numaranı doldur.",
+  "status.fillFromTo": "Lütfen Nereden ve Nereye alanlarını doldurun.",
+  "status.routeCalculating": "Adresler ve rota hesaplanıyor...",
+  "status.routeReady": "Rota ve fiyat hazır. Rezervasyonu kaydedebilirsiniz.",
+  "status.calculateFirst": "Önce rota ve fiyatı hesaplayın.",
+  "status.enterPhone": "Lütfen telefon numarasını girin.",
+  "status.reservationSaving": "Rezervasyon kaydediliyor...",
+  "status.reservationSaved": "Rezervasyon kaydedildi. Teşekkürler, en kısa sürede dönüş yapılacak.",
+  "status.reservationFailed": "Rezervasyon kaydedilemedi.",
+  "status.serverErrorPrefix": "Sunucu hatası:",
+  "status.reservationSaveErrorPrefix": "Rezervasyon kaydedilirken hata:",
+  "status.errorGeneric": "Bir hata oluştu, lütfen tekrar deneyin.",
+  "autocomplete.noResults": "Sonuç bulunamadı",
+  "route.distanceLabel": "Mesafe:",
+  "route.durationLabel": "Süre:",
+  "route.priceLabel": "Tahmini Fiyat:",
+  "route.minutesUnit": "dakika",
+  "route.kmUnit": "km",
+  "route.currency": "TL"
 }

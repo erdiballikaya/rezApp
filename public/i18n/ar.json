@@ -1,45 +1,34 @@
 {
   "brand.subtitle": "خدمة نقل من المطار بسعر ثابت",
-
   "nav.howItWorks": "كيف تعمل الخدمة؟",
   "nav.liveSupport": "دعم مباشر",
-
   "hero.title.line1": "من المطار إلى وسط المدينة،",
   "hero.title.line2": "اعرف السعر واحجز خلال دقيقتين.",
-
   "hero.subtitle": "انزل من الطائرة واعرف فورًا كم ستدفع للذهاب إلى أي مكان بدون الانتظار في طابور التاكسي.\nالسعر ثابت، بلا مفاجآت.",
-
   "hero.bullet.liveRoute": "مسار حي والمسافة على الخريطة",
   "hero.bullet.fixedPrice": "سعر ثابت، بدون مفاجآت بسبب الازدحام",
   "hero.bullet.safeTravel": "رحلة آمنة مع سيارات نقل مرخَّصة",
-
   "booking.title": "أنشئ مسارك الآن",
   "booking.subtitle": "اختر من أين إلى أين، وأدخل رقم هاتفك لترى السعر.",
   "booking.pillAirport": "انطلاق من المطار",
-
   "form.from.label": "من أين",
   "form.from.placeholder": "مثال: مطار إسطنبول - صالة الوصول",
   "form.to.label": "إلى أين",
   "form.to.placeholder": "مثال: رصيف كاديكوي",
   "form.phone.label": "رقم الهاتف",
   "form.phone.placeholder": "+90 5xx xxx xx xx",
-
   "button.calculateRoute": "احسب المسار والسعر",
   "button.saveReservation": "احفظ الحجز",
-
   "hero.badge.top": "جاهزون فور هبوط طائرتك",
   "hero.badge.bottom": "رحلة بسيارات مميزة",
-
   "hero.summary.cityCenter": "متوسط المسافة إلى مركز المدينة",
   "hero.summary.cityCenterValue": "~35 كم • 45 دقيقة",
   "hero.summary.startPriceLabel": "سعر البدء",
   "hero.summary.startPriceValue": "≈ 400 ليرة تركية",
   "hero.summary.note": "يتم تحديد السعر النهائي داخل التطبيق حسب المسافة والوقت وحالة الازدحام.",
-
   "map.title": "الخريطة والمسار",
   "map.subtitle": "اختر نقطة الانطلاق ونقطة الوصول وشاهد مسارك في الخريطة. يتم حساب المسافة والمدة باستخدام OSRM.",
   "map.pillLive": "معاينة المسار بشكل حي",
-
   "how.title": "كيف تعمل الخدمة؟",
   "how.step1.title": "اختر موقعك",
   "how.step1.text": "اكتب صالة الوصول في المطار والعنوان الذي تريد الذهاب إليه، ثم اختر من الاقتراحات بسهولة.",
@@ -47,8 +36,30 @@
   "how.step2.text": "شاهد مسارك على الخريطة والمدة التقريبية وعرض السعر الثابت فورًا.",
   "how.step3.title": "أرسل طلب الحجز",
   "how.step3.text": "احفظ حجزك باستخدام رقم هاتفك، وسيتصل بك فريق العمليات لتأكيده.",
-
   "footer.rights": "© 2025 جميع الحقوق محفوظة.",
   "footer.backToTop": "العودة إلى الأعلى",
-  "footer.tagline": "مصمّمة لرحلات نقل آمنة وشفافة بعد رحلتك الجوية."
+  "footer.tagline": "مصمّمة لرحلات نقل آمنة وشفافة بعد رحلتك الجوية.",
+  "status.calculatingRoute": "يتم حساب المسار...",
+  "status.savingReservation": "جارٍ حفظ الحجز...",
+  "status.success": "تم استلام حجزك، وسيتصل بك فريقنا قريبًا.",
+  "status.error": "حدث خطأ، يرجى المحاولة مرة أخرى.",
+  "status.missingData": "يرجى إدخال نقطة الانطلاق والوصول ورقم الهاتف.",
+  "status.fillFromTo": "يرجى إدخال نقطة الانطلاق ونقطة الوصول.",
+  "status.routeCalculating": "جارٍ حساب العناوين والمسار...",
+  "status.routeReady": "المسار والسعر جاهزان. يمكنك الآن حفظ الحجز.",
+  "status.calculateFirst": "يرجى حساب المسار والسعر أولاً.",
+  "status.enterPhone": "يرجى إدخال رقم الهاتف.",
+  "status.reservationSaving": "جارٍ حفظ الحجز...",
+  "status.reservationSaved": "تم حفظ الحجز. شكرًا لك، وسيتواصل معك فريقنا قريبًا.",
+  "status.reservationFailed": "تعذّر حفظ الحجز.",
+  "status.serverErrorPrefix": "خطأ في الخادم:",
+  "status.reservationSaveErrorPrefix": "خطأ أثناء حفظ الحجز:",
+  "status.errorGeneric": "حدث خطأ، يرجى المحاولة مرة أخرى.",
+  "autocomplete.noResults": "لا توجد نتائج",
+  "route.distanceLabel": "المسافة:",
+  "route.durationLabel": "المدة:",
+  "route.priceLabel": "السعر التقريبي:",
+  "route.minutesUnit": "دقيقة",
+  "route.kmUnit": "كم",
+  "route.currency": "ليرة تركية"
 }
