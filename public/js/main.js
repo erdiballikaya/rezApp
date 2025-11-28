@@ -44,11 +44,18 @@ let lastReservationData = null;
 // Kullanıcının konumuna zoom (sayfa ilk açıldığında)
 let currentLocationMarker = null;
 
+// autocomplete için de kullanacağımız global konum
+let userLat = null;
+let userLon = null;
+
 if ("geolocation" in navigator) {
   navigator.geolocation.getCurrentPosition(
     (pos) => {
       const lat = pos.coords.latitude;
       const lon = pos.coords.longitude;
+
+      userLat = lat;
+      userLon = lon;
 
       // Haritayı kullanıcının konumuna yakınlaştır
       map.setView([lat, lon], 14);
@@ -71,6 +78,7 @@ if ("geolocation" in navigator) {
 } else {
   console.warn("Bu tarayıcı geolocation desteklemiyor.");
 }
+
 
 
 // autocomplete için seçilen değerler
@@ -122,9 +130,34 @@ async function geocode(address) {
 }
 
 // Nominatim ile autocomplete (çoklu sonuç)
+// İki nokta arasındaki yaklaşık mesafeyi (km) hesaplamak için küçük helper
+function distanceKm(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Dünya yarıçapı (km)
+  const toRad = (deg) => (deg * Math.PI) / 180;
+
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) *
+      Math.cos(toRad(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
 async function searchPlaces(query) {
   const url =
-    "https://nominatim.openstreetmap.org/search?format=json&limit=5&addressdetails=1&countrycodes=tr&q=" +
+    "https://nominatim.openstreetmap.org/search" +
+    "?format=json" +
+    "&limit=10" +
+    "&addressdetails=1" +
+    "&countrycodes=tr" +
+    "&bounded=1" + // istediğin gibi kalsın
+    "&q=" +
     encodeURIComponent(query);
 
   const res = await fetch(url, {
@@ -133,13 +166,55 @@ async function searchPlaces(query) {
   if (!res.ok) throw new Error("Autocomplete isteği başarısız oldu.");
 
   const data = await res.json();
-  return data.map((item) => ({
-    lat: parseFloat(item.lat),
-    lon: parseFloat(item.lon),
-    displayName: item.display_name,
-    label: item.name + ", " + item.address.province,
-  }));
+  console.log(data);
+
+  // Önce map’le, sonra gerekiyorsa mesafeye göre sırala
+  let items = data.map((item) => {
+    const lat = parseFloat(item.lat);
+    const lon = parseFloat(item.lon);
+    const addr = item.address || {};
+
+    const region =
+      addr.province ??
+      addr.town ??
+      addr.city ??
+      "";
+
+      console.log(region)
+    const label = (region
+      ? `${item.name || addr.road || addr.suburb || item.display_name}, ${region}`
+      : item.name || item.display_name) + ' ' + (item?.address?.state ?? "");
+
+    // Mesafe bilgisi (sadece sıralamada kullanacağız)
+    let dist = null;
+    if (userLat != null && userLon != null && !Number.isNaN(lat) && !Number.isNaN(lon)) {
+      dist = distanceKm(userLat, userLon, lat, lon);
+    }
+
+    return {
+      lat,
+      lon,
+      displayName: item.display_name,
+      label,
+      _distanceKm: dist
+    };
+  });
+
+  // Eğer kullanıcı konumu biliniyorsa, yakınlığa göre sırala
+  if (userLat != null && userLon != null) {
+    items = items.sort((a, b) => {
+      if (a._distanceKm == null && b._distanceKm == null) return 0;
+      if (a._distanceKm == null) return 1;
+      if (b._distanceKm == null) return -1;
+      return a._distanceKm - b._distanceKm;
+    });
+  }
+
+  // Dışarıya _distanceKm'yi vermek zorunda değilsin, istersen silebilirsin
+  return items.map(({ _distanceKm, ...rest }) => rest);
 }
+
+
 
 // Öneride gösterilecek kısa label
 function buildShortLabel(item) {
