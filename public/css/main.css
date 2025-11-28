@@ -698,3 +698,33 @@ button {
     display: inline-flex;
   }
 }
+
+
+.lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* Ortak stil */
+.lang-switcher .lang-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bayrak ikonu boyutu */
+.lang-switcher .lang-btn .fi {
+    font-size: 20px; /* bayrak boyutu */
+    border-radius: 999px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.25);
+}
+
+/* Seçili dili vurgulamak için (i18n.js ile is-active class’ı ekliyoruz) */
+.lang-switcher .lang-btn.is-active .fi {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(0,0,0,0.35);
+}

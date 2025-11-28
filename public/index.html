@@ -14,8 +14,13 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
+    <!-- Dil ikonları -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
+
+
     <!-- Ana stil -->
     <link rel="stylesheet" href="/css/main.css" />
+
 </head>
 
 <body class="page">
@@ -29,19 +34,32 @@
                 </div>
                 <div class="brand-text">
                     <span class="brand-title">DeyyanAora Kuzukaya</span>
-                    <span class="brand-subtitle">Havalimanı transferi, sabit fiyat</span>
+                    <span class="brand-subtitle" data-i18n="brand.subtitle">Havalimanı transferi, sabit fiyat</span>
                 </div>
             </a>
 
             <nav class="header-nav">
-                <a href="#how-it-works" class="nav-link">Nasıl çalışır?</a>
+                <a href="#how-it-works" class="nav-link" data-i18n="nav.howItWorks">Nasıl çalışır?</a>
                 <a href="tel:+905555555555" class="nav-link nav-link-pill">
                     <i class="fa-solid fa-phone"></i>
-                    <span>Canlı destek</span>
+                    <span data-i18n="nav.liveSupport">Canlı destek</span>
                 </a>
                 <a href="/admin.html" class="icon-button" title="Admin Panel" target="_blank" rel="noopener noreferrer">
                     <i class="fa-solid fa-gauge-high"></i>
                 </a>
+
+                <!-- Dil seçim butonları -->
+                <div class="lang-switcher">
+                    <button type="button" data-set-lang="tr" class="lang-btn">
+                        <span class="fi fi-tr" aria-label="Türkçe"></span>
+                    </button>
+                    <button type="button" data-set-lang="en" class="lang-btn">
+                        <span class="fi fi-gb" aria-label="English"></span>
+                    </button>
+                    <button type="button" data-set-lang="ar" class="lang-btn">
+                        <span class="fi fi-sa" aria-label="العربية"></span>
+                    </button>
+                </div>
 
             </nav>
         </div>
@@ -50,16 +68,16 @@
     <!-- MAIN -->
     <main class="site-main">
         <!-- HERO -->
-        <section class="hero">
+        <section id="hero" class="hero">
             <div class="hero-bg-overlay"></div>
             <div class="container hero-inner">
                 <!-- Sol: mesaj + form -->
                 <div class="hero-left">
                     <h1 class="hero-title">
-                        Havalimanından şehre,<br />
-                        <span>2 dakikada fiyatı görüp rezervasyon yap.</span>
+                        <span data-i18n="hero.title.line1">Havalimanından şehre,</span><br />
+                        <span data-i18n="hero.title.line2">2 dakikada fiyatı görüp rezervasyon yap.</span>
                     </h1>
-                    <p class="hero-subtitle">
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">
                         Uçağından in, taksi sırasına girmeden, nereye kaç TL’ye gideceğini hemen öğren.
                         <br />
                         Fiyat sabit, sürpriz yok.
@@ -68,55 +86,59 @@
                     <ul class="hero-bullets">
                         <li>
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>Harita üzerinde canlı rota ve mesafe</span>
+                            <span data-i18n="hero.bullet.liveRoute">Harita üzerinde canlı rota ve mesafe</span>
                         </li>
                         <li>
                             <i class="fa-solid fa-sack-dollar"></i>
-                            <span>Sabit ücret, trafik sürprizi yok</span>
+                            <span data-i18n="hero.bullet.fixedPrice">Sabit ücret, trafik sürprizi yok</span>
                         </li>
                         <li>
                             <i class="fa-solid fa-shield-heart"></i>
-                            <span>Yetkili transfer araçları ile güvenli yolculuk</span>
+                            <span data-i18n="hero.bullet.safeTravel">Yetkili transfer araçları ile güvenli
+                                yolculuk</span>
                         </li>
                     </ul>
 
                     <div class="card booking-card">
                         <div class="card-header-row">
                             <div>
-                                <h2 class="card-title">Hemen rota oluştur</h2>
-                                <p class="card-subtitle">
+                                <h2 class="card-title" data-i18n="booking.title">Hemen rota oluştur</h2>
+                                <p class="card-subtitle" data-i18n="booking.subtitle">
                                     Nereden nereye gideceğini ve telefonunu gir, fiyatı gör.
                                 </p>
                             </div>
                             <div class="pill pill-airport">
                                 <i class="fa-solid fa-plane-arrival"></i>
-                                <span>Havalimanı çıkışlı</span>
+                                <span data-i18n="booking.pillAirport">Havalimanı çıkışlı</span>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="fromAddress">Nereden</label>
-                                <input type="text" id="fromAddress" placeholder="Örn: İstanbul Havalimanı Geliş" />
+                                <label for="fromAddress" data-i18n="form.from.label">Nereden</label>
+                                <input type="text" id="fromAddress" data-i18n-placeholder="form.from.placeholder"
+                                    placeholder="Örn: İstanbul Havalimanı Geliş" />
                             </div>
                             <div class="form-group">
-                                <label for="toAddress">Nereye</label>
-                                <input type="text" id="toAddress" placeholder="Örn: Kadıköy Rıhtım" />
+                                <label for="toAddress" data-i18n="form.to.label">Nereye</label>
+                                <input type="text" id="toAddress" data-i18n-placeholder="form.to.placeholder"
+                                    placeholder="Örn: Kadıköy Rıhtım" />
                             </div>
                             <div class="form-group">
-                                <label for="phone">Telefon Numarası</label>
-                                <input type="tel" id="phone" placeholder="+90 5xx xxx xx xx" />
+                                <label for="phone" data-i18n="form.phone.label">Telefon Numarası</label>
+                                <input type="tel" id="phone" data-i18n-placeholder="form.phone.placeholder"
+                                    placeholder="+90 5xx xxx xx xx" />
                             </div>
                         </div>
 
                         <div class="actions">
                             <button id="btnCalculate" class="btn-primary">
                                 <i class="fa-solid fa-route"></i>
-                                <span>Rota ve fiyatı hesapla</span>
+                                <span data-i18n="button.calculateRoute">Rota ve fiyatı hesapla</span>
                             </button>
                             <button id="btnSave" class="btn-secondary" disabled>
                                 <i class="fa-solid fa-check-circle"></i>
-                                <span>Rezervasyonu kaydet</span>
+                                <span data-i18n="button.saveReservation">Rezervasyonu kaydet</span>
                             </button>
                         </div>
 
@@ -135,24 +157,28 @@
                                 alt="Havalimanı önünde transfer aracı" />
                             <div class="hero-badge hero-badge-top">
                                 <i class="fa-solid fa-clock"></i>
-                                <span>Uçuşun iner inmez hazır</span>
+                                <span data-i18n="hero.badge.top">Uçuşun iner inmez hazır</span>
                             </div>
                             <div class="hero-badge hero-badge-bottom">
                                 <i class="fa-solid fa-car-side"></i>
-                                <span>Premium araçlar ile yolculuk</span>
+                                <span data-i18n="hero.badge.bottom">Premium araçlar ile yolculuk</span>
                             </div>
                         </div>
 
                         <div class="hero-summary">
                             <div class="summary-row">
-                                <span class="summary-label">Ortalama şehir merkezi</span>
-                                <span class="summary-value">~35 km • 45 dk</span>
+                                <span class="summary-label" data-i18n="hero.summary.cityCenter">Ortalama şehir
+                                    merkezi</span>
+                                <span class="summary-value" data-i18n="hero.summary.cityCenterValue">~35 km • 45
+                                    dk</span>
                             </div>
                             <div class="summary-row">
-                                <span class="summary-label">Başlangıç fiyatı</span>
-                                <span class="summary-value highlight">≈ 400 TL</span>
+                                <span class="summary-label" data-i18n="hero.summary.startPriceLabel">Başlangıç
+                                    fiyatı</span>
+                                <span class="summary-value highlight" data-i18n="hero.summary.startPriceValue">≈ 400
+                                    TL</span>
                             </div>
-                            <p class="summary-note">
+                            <p class="summary-note" data-i18n="hero.summary.note">
                                 Fiyat; mesafe, saat ve trafiğe göre uygulama içinde netleştirilir.
                             </p>
                         </div>
@@ -167,14 +193,14 @@
                 <div class="card card-map">
                     <div class="card-header-row map-header">
                         <div>
-                            <h2 class="card-title">Harita & Rota</h2>
-                            <p class="card-subtitle">
+                            <h2 class="card-title" data-i18n="map.title">Harita &amp; Rota</h2>
+                            <p class="card-subtitle" data-i18n="map.subtitle">
                                 Kalkış ve varış noktanı seç, rotanı canlı gör. Mesafe ve süre hesabı OSRM ile yapılır.
                             </p>
                         </div>
                         <div class="pill pill-live">
                             <span class="dot"></span>
-                            <span>Canlı rota önizleme</span>
+                            <span data-i18n="map.pillLive">Canlı rota önizleme</span>
                         </div>
                     </div>
 
@@ -186,14 +212,14 @@
         <!-- HOW IT WORKS -->
         <section id="how-it-works" class="how-it-works">
             <div class="container">
-                <h2 class="section-title">Nasıl çalışır?</h2>
+                <h2 class="section-title" data-i18n="how.title">Nasıl çalışır?</h2>
                 <div class="steps">
                     <div class="step">
                         <div class="step-icon">
                             <span>1</span>
                         </div>
-                        <h3>Konumunu seç</h3>
-                        <p>
+                        <h3 data-i18n="how.step1.title">Konumunu seç</h3>
+                        <p data-i18n="how.step1.text">
                             Havalimanı geliş terminalini ve gitmek istediğin adresi yaz.
                             Otomatik önerilerden kolayca seç.
                         </p>
@@ -202,8 +228,8 @@
                         <div class="step-icon">
                             <span>2</span>
                         </div>
-                        <h3>Rota & fiyatı gör</h3>
-                        <p>
+                        <h3 data-i18n="how.step2.title">Rota &amp; fiyatı gör</h3>
+                        <p data-i18n="how.step2.text">
                             Harita üzerinde rotanı, tahmini süreyi ve sabit ücret teklifini hemen gör.
                         </p>
                     </div>
@@ -211,8 +237,8 @@
                         <div class="step-icon">
                             <span>3</span>
                         </div>
-                        <h3>Rezervasyonunu bırak</h3>
-                        <p>
+                        <h3 data-i18n="how.step3.title">Rezervasyonunu bırak</h3>
+                        <p data-i18n="how.step3.text">
                             Telefon numaranla rezervasyonunu kaydet, operasyon ekibi seni arayıp onaylasın.
                         </p>
                     </div>
@@ -226,16 +252,16 @@
         <div class="container footer-inner">
             <div class="footer-left">
                 <span class="footer-logo">AirPortRide</span>
-                <span class="footer-text">
+                <span class="footer-text" data-i18n="footer.rights">
                     © 2025 Tüm hakları saklıdır.
                 </span>
             </div>
             <div class="footer-right">
                 <a href="#hero" class="footer-link">
-                    <i class="fa-solid fa-arrow-up"></i> Başa dön
+                    <i class="fa-solid fa-arrow-up"></i> <span data-i18n="footer.backToTop">Başa dön</span>
                 </a>
                 <span class="footer-dot">•</span>
-                <span class="footer-link muted">
+                <span class="footer-link muted" data-i18n="footer.tagline">
                     Uçuş sonrası güvenli ve şeffaf transfer için tasarlandı.
                 </span>
             </div>
@@ -245,6 +271,9 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- i18n JS (çeviri sistemi) -->
+    <script src="/js/i18n.js"></script>
 
     <!-- Ana JS -->
     <script src="/js/main.js"></script>

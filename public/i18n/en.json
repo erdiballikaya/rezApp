@@ -1,0 +1,53 @@
+{
+  "brand.subtitle": "Airport transfer, fixed price",
+
+  "nav.howItWorks": "How it works",
+  "nav.liveSupport": "Live support",
+
+  "hero.title.line1": "From the airport to the city,",
+  "hero.title.line2": "See the price and book in 2 minutes.",
+  "hero.subtitle": "Get off your flight and instantly see how much it costs to go anywhere without waiting in the taxi line.\nPrice is fixed, no surprises.",
+
+  "hero.bullet.liveRoute": "Live route and distance on the map",
+  "hero.bullet.fixedPrice": "Fixed fare, no traffic surprises",
+  "hero.bullet.safeTravel": "Safe journey with licensed transfer vehicles",
+
+  "booking.title": "Create your route now",
+  "booking.subtitle": "Enter where you’re going from/to and your phone number to see the price.",
+  "booking.pillAirport": "From the airport",
+
+  "form.from.label": "From",
+  "form.from.placeholder": "E.g. Istanbul Airport Arrivals",
+  "form.to.label": "To",
+  "form.to.placeholder": "E.g. Kadıköy Pier",
+  "form.phone.label": "Phone Number",
+  "form.phone.placeholder": "+90 5xx xxx xx xx",
+
+  "button.calculateRoute": "Calculate route and price",
+  "button.saveReservation": "Save reservation",
+
+  "hero.badge.top": "Ready as soon as your flight lands",
+  "hero.badge.bottom": "Travel with premium vehicles",
+
+  "hero.summary.cityCenter": "Average city center",
+  "hero.summary.cityCenterValue": "~35 km • 45 min",
+  "hero.summary.startPriceLabel": "Starting price",
+  "hero.summary.startPriceValue": "≈ 400 TRY",
+  "hero.summary.note": "Price is finalized in the app based on distance, time and traffic.",
+
+  "map.title": "Map & Route",
+  "map.subtitle": "Select your departure and arrival points and see your route live. Distance and time are calculated with OSRM.",
+  "map.pillLive": "Live route preview",
+
+  "how.title": "How it works",
+  "how.step1.title": "Choose your location",
+  "how.step1.text": "Type the airport arrivals terminal and the address you want to go to. Easily pick from automatic suggestions.",
+  "how.step2.title": "See route & price",
+  "how.step2.text": "Instantly see your route on the map, the estimated time and the fixed fare offer.",
+  "how.step3.title": "Leave your reservation",
+  "how.step3.text": "Save your reservation with your phone number and the operations team will call you to confirm.",
+
+  "footer.rights": "© 2025 All rights reserved.",
+  "footer.backToTop": "Back to top",
+  "footer.tagline": "Designed for safe and transparent transfers after your flight."
+}
